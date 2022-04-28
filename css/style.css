@@ -1,0 +1,117 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(34, 26, 26)!important;
+    background-image: url('../imgs/back.img')!important;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    
+}
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.bigBox {
+    padding-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list {
+    padding: 0;
+    list-style: none;
+    width: 820px;
+    height: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    /* border: 2px solid black; */
+    margin: 0;
+    background-color: transparent;
+    background-color: transparent;
+}
+
+
+.cardItem {
+    background-color: transparent;
+    width: 80px;
+    height: 80px;
+    /* border: 1px solid rgba(255, 249, 249, 0.664); */
+    margin: 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.list li:hover {
+    /* background-color: #ccc; */
+}
+
+.poke-img {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #333;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+.innerBox {
+    width: 70px;
+    height: 70px;
+}
+
+.itemBox {
+    background-color: rgba(248, 231, 76, 0.068);
+    border-radius: 10px;
+    border: 2px solid #ccc;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+}
+
+.timeBox {
+    text-align: center;
+    border: 2px solid #333;
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 25px;
+}
+
+.resultBox {
+    text-align: center;
+    border: 2px solid #333;
+    width: 150px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 6px;
+    font-size: 25px;
+}
+
+.timer .bx {
+    color: gold;
+    font-size: 60px;
+}
+
+.start .bx {
+    color: gold;
+    font-size: 60px;
+}
+
+.error {
+    color: gold;
+}
