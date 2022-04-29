@@ -110,3 +110,33 @@ elList.addEventListener('click', (evt) => {
     renderElements(generatedArr);
   }
 });
+
+
+// Lazizadan oldim...
+
+document.querySelector('.timeBox').innerHTML =
+  05 + ":" + 1;
+timeStart();
+
+
+function timeStart() {
+  var justTime = document.querySelector('.timeBox').innerHTML;
+  var arrTime = justTime.split(/[:]+/);
+  var j = arrTime[0];
+  var k = checkSecond((arrTime[1] - 1));
+  if(k==59){j=j-1}
+  if(j<0){
+    return
+  }
+  
+  document.querySelector('.timeBox').innerHTML =
+    j + ":" + k;
+  setTimeout(timeStart, 1000);
+  
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; 
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
