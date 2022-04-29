@@ -21,29 +21,59 @@ const generatedArr = randomArr(pokemons);
 
 function renderElements(arr) {
   elList.innerHTML = null;
+  let x = 1;
+  let y = 1;
 
   for (let i = 0; i < arr.length; i++) {
+    if (x > 10) {
+      x = 1;
+      y++;
+    }
     let elItem = document.createElement('li');
-    elItem.className = "cardItem"
+    elItem.classList = `cardItem x_${x} y_${y}`;
     if (arr[i]?.children) {
       let elImg = document.createElement('img');
-      elImg.className = 'poke-img';
+      elImg.classList = `poke-img x_${x} y_${y}`;
       elImg.src = arr[i].children.img;
       elImg.dataset.id = arr[i].id;
       elImg.dataset.index = i;
+      // console.log(elImg.classList);
 
       elItem.appendChild(elImg);
+      x++;
     }
-
     elList.appendChild(elItem);
   }
 }
 renderElements(generatedArr);
 
+let cardItem = document.querySelectorAll('.cardItem');
+let pokeImg = document.querySelectorAll('.poke-img');
+
+// console.log(cardItem);
+
 let clickCount = 0;
 let selectElement = null;
 
+// console.log(cardItem);
+
+let xxx = [];
+let yyy = [];
+cardItem.forEach((item) => {
+  xxx.push(item.classList[1].split('_')[1]);
+  yyy.push(item.classList[2].split('_')[1]);
+  // console.log(item.classList[1].split('_')[1]);
+  // console.log(item.classList[2].split('_')[1]);
+});
+
+console.log(xxx, yyy);
+
 elList.addEventListener('click', (evt) => {
+  // let xxx = evt.target.closest('.cardItem').classList[1].split('_')[1];
+  // let yyy = evt.target.closest('.cardItem').classList[2].split('_')[1];
+  // let arr1 = [];
+  // arr1.push(xxx, yyy);
+  // console.log(arr1);
   if (evt.target.matches('.poke-img')) {
     let index = evt.target.dataset.index;
     let id = evt.target.dataset.id;
@@ -60,10 +90,18 @@ elList.addEventListener('click', (evt) => {
     } else {
       clickCount = 0;
 
-      if (selectElement.id === id) {
-        generatedArr[index] = null;
-        generatedArr[selectElement.index] = null;
-        elError.textContent = 'Success';
+      if (selectElement.id === id && selectElement.index !== index) {
+        let xx = evt.target.classList[1].split('_')[1];
+        let yy = evt.target.classList[2].split('_')[1];
+
+        let arr2 = [];
+        arr2.push(xx, yy);
+        console.log(arr2);
+      
+        console.log('ok');
+          generatedArr[index] = null;
+          generatedArr[selectElement.index] = null;
+          elError.textContent = 'Success';
       } else {
         elError.textContent = 'Error';
       }
