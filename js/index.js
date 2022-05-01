@@ -1,13 +1,24 @@
 const elList = document.querySelector('.list');
-const elError = document.querySelector('.error');
+let elErrorBox = document.querySelector('.error');
+let resCount = document.querySelector('.resCount');
+let generatedArr = randomArr(pokemons);
+let clickCount = 0;
+let selectElement = null;
+let counter = 0;
+const myColumns = {
+  y1: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  y6: [50, 51, 52, 53, 54, 55, 56, 57, 58, 59],
+  x1: [0, 10, 20, 30, 40, 50],
+  x10: [9, 19, 29, 39, 49, 59],
+};
 
+// Create random array
 function randomArr(arr) {
   let newRandomArray = Array(4).fill(arr).flat(1);
 
   for (let i = 0; i < 150; i++) {
-    var indexA = parseInt(Math.random() * 60);
-
-    var rendomItem = newRandomArray.splice(indexA, 1)[0];
+    let index = parseInt(Math.random() * 60);
+    let rendomItem = newRandomArray.splice(index, 1)[0];
 
     if (rendomItem) {
       newRandomArray = [...newRandomArray, rendomItem];
@@ -17,64 +28,95 @@ function randomArr(arr) {
   return newRandomArray;
 }
 
-const generatedArr = randomArr(pokemons);
-
+// Render elements
 function renderElements(arr) {
   elList.innerHTML = null;
-  let x = 1;
-  let y = 1;
 
   for (let i = 0; i < arr.length; i++) {
-    if (x > 10) {
-      x = 1;
-      y++;
-    }
     let elItem = document.createElement('li');
-    elItem.classList = `cardItem x_${x} y_${y}`;
+    elItem.classList = `cardItem`;
+
     if (arr[i]?.children) {
       let elImg = document.createElement('img');
-      elImg.classList = `poke-img x_${x} y_${y}`;
+      elImg.classList = `poke-img`;
       elImg.src = arr[i].children.img;
       elImg.dataset.id = arr[i].id;
       elImg.dataset.index = i;
-      // console.log(elImg.classList);
 
       elItem.appendChild(elImg);
-      x++;
     }
+
     elList.appendChild(elItem);
   }
 }
-renderElements(generatedArr);
 
-let cardItem = document.querySelectorAll('.cardItem');
-let pokeImg = document.querySelectorAll('.poke-img');
+// Alert box
+function alertSuccessBox() {
+  elErrorBox.textContent = "Success"
+  elErrorBox.style.color = "green" 
+}
 
-// console.log(cardItem);
+function alertErrorBox() {
+  elErrorBox.textContent = "Try again"
+  elErrorBox.style.color = "red" 
+}
 
-let clickCount = 0;
-let selectElement = null;
+// For counter ---
+// function counterBox(counter = 1) {
+//   counter++;
+//   resCount.textContent = `+ ${counter}`
+// }
 
-// console.log(cardItem);
+// Delete elements
+function deleteElements(fistIndex, secondIndex) {
+  generatedArr[fistIndex] = null;
+  generatedArr[secondIndex] = null;
 
-let xxx = [];
-let yyy = [];
-cardItem.forEach((item) => {
-  xxx.push(item.classList[1].split('_')[1]);
-  yyy.push(item.classList[2].split('_')[1]);
-  // console.log(item.classList[1].split('_')[1]);
-  // console.log(item.classList[2].split('_')[1]);
-});
+  renderElements(generatedArr);
+}
 
-console.log(xxx, yyy);
+// Check delete
+function checkForDelete(firstIndex, secondIndex) {
+  let high = firstIndex > secondIndex ? firstIndex : secondIndex;
+  let width = firstIndex > secondIndex ? secondIndex : firstIndex;
 
-elList.addEventListener('click', (evt) => {
-  // let xxx = evt.target.closest('.cardItem').classList[1].split('_')[1];
-  // let yyy = evt.target.closest('.cardItem').classList[2].split('_')[1];
-  // let arr1 = [];
-  // arr1.push(xxx, yyy);
-  // console.log(arr1);
+  if (high - width == 1 || high - width == 10) {
+    deleteElements(firstIndex, secondIndex);
+    alertSuccessBox()
+  } else if (
+    myColumns.y1.includes(firstIndex) &&
+    myColumns.y1.includes(secondIndex)
+  ) {
+    deleteElements(firstIndex, secondIndex);
+    alertSuccessBox()
+  } else if (
+    myColumns.y6.includes(firstIndex) &&
+    myColumns.y6.includes(secondIndex)
+  ) {
+    deleteElements(firstIndex, secondIndex);
+    alertSuccessBox()
+  } else if (
+    myColumns.x1.includes(firstIndex) &&
+    myColumns.x1.includes(secondIndex)
+  ) {
+    deleteElements(firstIndex, secondIndex);
+    alertSuccessBox()
+  } else if (
+    myColumns.x10.includes(firstIndex) &&
+    myColumns.x10.includes(secondIndex)
+  ) {
+    deleteElements(firstIndex, secondIndex);
+    alertSuccessBox();
+  } else {
+    alertErrorBox()
+    renderElements(generatedArr);
+  }
+}
+
+// Handle click event
+function handleClick(evt) {
   if (evt.target.matches('.poke-img')) {
+    evt.target.closest('.cardItem').classList.add('cardItem-active');
     let index = evt.target.dataset.index;
     let id = evt.target.dataset.id;
 
@@ -85,58 +127,47 @@ elList.addEventListener('click', (evt) => {
         id: id,
         index: index,
       };
-
-      elError.textContent = '';
     } else {
       clickCount = 0;
 
       if (selectElement.id === id && selectElement.index !== index) {
-        let xx = evt.target.classList[1].split('_')[1];
-        let yy = evt.target.classList[2].split('_')[1];
-
-        let arr2 = [];
-        arr2.push(xx, yy);
-        console.log(arr2);
-      
-        console.log('ok');
-          generatedArr[index] = null;
-          generatedArr[selectElement.index] = null;
-          elError.textContent = 'Success';
+        setTimeout(function(){
+          checkForDelete(index - 0, selectElement.index - 0);
+        }, 300);
       } else {
-        elError.textContent = 'Error';
+        alertErrorBox()
+        renderElements(generatedArr);
       }
     }
-
-    renderElements(generatedArr);
   }
-});
-
-
-// Lazizadan oldim...
-
-document.querySelector('.timeBox').innerHTML =
-  05 + ":" + 1;
-timeStart();
-
-
-function timeStart() {
-  var justTime = document.querySelector('.timeBox').innerHTML;
-  var arrTime = justTime.split(/[:]+/);
-  var j = arrTime[0];
-  var k = checkSecond((arrTime[1] - 1));
-  if(k==59){j=j-1}
-  if(j<0){
-    return
-  }
-  
-  document.querySelector('.timeBox').innerHTML =
-    j + ":" + k;
-  setTimeout(timeStart, 1000);
-  
 }
 
-function checkSecond(sec) {
-  if (sec < 10 && sec >= 0) {sec = "0" + sec}; 
-  if (sec < 0) {sec = "59"};
-  return sec;
+elList.addEventListener('click', handleClick);
+
+renderElements(generatedArr);
+
+// time time timer
+
+let elTimeBox = document.querySelector('.timeBox');
+let gameTime = 120;
+
+// time time timer
+
+function timer() {
+  setInterval(() => {
+    if (gameTime <= 0) {
+      return;
+    }
+
+    let minute = parseInt(gameTime / 60);
+    let secund = gameTime % 60;
+
+    gameTime -= 1;
+
+    elTimeBox.textContent = `${String(minute).padStart(2, '0')}:${String(
+      secund
+    ).padStart(2, '0')}`;
+  }, 1000);
 }
+
+timer();
