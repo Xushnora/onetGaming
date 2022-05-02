@@ -1,6 +1,11 @@
 const elList = document.querySelector('.list');
 let elErrorBox = document.querySelector('.error');
 let resCount = document.querySelector('.resCount');
+// restart timer
+let elgameModalBox = document.querySelector('.gameModal');
+let elRestartBtn = document.querySelector('.btnRestart');
+
+// ****
 let generatedArr = randomArr(pokemons);
 let clickCount = 0;
 let selectElement = null;
@@ -68,8 +73,8 @@ function alertErrorBox() {
 // }
 
 // Delete elements
-function deleteElements(fistIndex, secondIndex) {
-  generatedArr[fistIndex] = null;
+function deleteElements(firstIndex, secondIndex) {
+  generatedArr[firstIndex] = null;
   generatedArr[secondIndex] = null;
 
   renderElements(generatedArr);
@@ -78,9 +83,9 @@ function deleteElements(fistIndex, secondIndex) {
 // Check delete
 function checkForDelete(firstIndex, secondIndex) {
   let high = firstIndex > secondIndex ? firstIndex : secondIndex;
-  let width = firstIndex > secondIndex ? secondIndex : firstIndex;
+  let low = firstIndex > secondIndex ? secondIndex : firstIndex;
 
-  if (high - width == 1 || high - width == 10) {
+  if (high - low == 1 || high - low == 10) {
     deleteElements(firstIndex, secondIndex);
     alertSuccessBox()
   } else if (
@@ -155,7 +160,15 @@ let gameTime = 120;
 
 function timer() {
   setInterval(() => {
-    if (gameTime <= 0) {
+    if (gameTime < 0) {
+      elgameModalBox.classList.add('show')
+      function restartBtn() {
+        elRestartBtn.addEventListener("click", () =>{
+          window.location.reload();
+          return;
+        })
+      }
+      restartBtn()
       return;
     }
 
