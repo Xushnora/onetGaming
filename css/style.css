@@ -167,7 +167,7 @@ body {
 }
 
 .btnRestart {
-    padding: 0px 20px;
+    padding: 5px 20px;
     border-radius: 6px;
     font-size: 25px;
     font-weight: 600;
@@ -187,4 +187,32 @@ body {
 
 .show {
     top: 0px;
+}
+
+@media screen and (width: 970px) {
+    .list {
+        width: 100%;
+    }
+
+    .cardItem {
+        width: 10%;
+    }
+
+    .poke-img {
+        width: 10%;
+    }
+}
+
+@media screen and (width: 800px) {
+    .list {
+        width: 100%;
+    }
+
+    .cardItem {
+        width: 10%;
+    }
+
+    .poke-img {
+        width: 10%;
+    }
 }
