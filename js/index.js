@@ -133,17 +133,17 @@ function deleteElements(fistIndex, secondIndex) {
 }
 
 // check elements
-// function deleteEl(oneIndex, twoIndex) {
-//   if(oneIndex - twoIndex === 2 && oneIndex > null < twoIndex) {
-//     console.log('okk');
-//     deleteElements(oneIndex, twoIndex);
-//     alertSuccessBox()
-//     resCount.textContent = `${++couter} +`;
-//   } else {
-//     alertErrorBox()
-//     renderElements(generatedArr);
-//   }
-// }
+function deleteEl(oneIndex, twoIndex) {
+  if(oneIndex - twoIndex === 2 && oneIndex > null < twoIndex) {
+    console.log('okk');
+    deleteElements(oneIndex, twoIndex);
+    alertSuccessBox()
+    resCount.textContent = `${++couter} +`;
+  } else {
+    alertErrorBox()
+    renderElements(generatedArr);
+  }
+}
 
 
 // check elements 
@@ -204,7 +204,7 @@ function checkForDelete(firstIndex, secondIndex) {
     resCount.textContent = `${++couter} +`;
   } else {
     checkDeleteOther(high, low);
-    // deleteEl(high, low);
+    deleteEl(high, low);
   }
 }
 
