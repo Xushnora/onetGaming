@@ -120,7 +120,7 @@ function deleteElementRow(rowName, index) {
   }
 }
 
-// Delete elements
+// check elements
 function deleteElements(fistIndex, secondIndex) {
   generatedArr[fistIndex] = null;
   generatedArr[secondIndex] = null;
@@ -132,174 +132,19 @@ function deleteElements(fistIndex, secondIndex) {
   renderElements(generatedArr);
 }
 
-// Delete element in BUG
-function checkForDeleteInner(firstIndex, secondIndex) {
-  let high = firstIndex > secondIndex ? firstIndex : secondIndex;
-  let low = firstIndex > secondIndex ? secondIndex : firstIndex;
-  
-  if(high - low == 9) {
-    if(columns.x1[0] == null || columns.x2[1] == null){
-      deleteElements(firstIndex, secondIndex);
-      alertSuccessBox()
-    }
-  } else if(high - low == 9 && columns.x2[0] == null || columns.x3[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x3[0] == null || columns.x4[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x4[0] == null || columns.x5[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x5[0] == null || columns.x6[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x6[0] == null || columns.x7[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x7[0] == null || columns.x8[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x8[0] == null || columns.x9[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x9[0] == null || columns.x10[1] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } 
-  // two block
-   else if(high - low == 9 && columns.x1[1] == null || columns.x2[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x2[1] == null || columns.x3[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x3[1] == null || columns.x4[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x4[1] == null || columns.x5[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x5[1] == null || columns.x6[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x6[1] == null || columns.x7[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x7[1] == null || columns.x8[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x8[1] == null || columns.x9[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x9[1] == null || columns.x10[2] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }
-  // three block
-  else if(high - low == 9 && columns.x1[2] == null || columns.x2[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x1[2] == null || columns.x2[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x1[2] == null || columns.x2[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x1[2] == null || columns.x2[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x1[2] == null || columns.x2[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x2[2] == null || columns.x3[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x3[2] == null || columns.x4[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x4[2] == null || columns.x5[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x5[2] == null || columns.x6[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x6[2] == null || columns.x7[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x7[2] == null || columns.x8[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x8[2] == null || columns.x9[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x9[2] == null || columns.x10[3] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } 
-  // // four block
-  else if(high - low == 9 && columns.x1[3] == null || columns.x2[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x2[3] == null || columns.x3[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x3[3] == null || columns.x4[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x4[3] == null || columns.x5[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x5[3] == null || columns.x6[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x6[3] == null || columns.x7[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x7[3] == null || columns.x8[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x8[3] == null || columns.x9[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x9[3] == null || columns.x10[4] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } 
-  // // five block
-  else if(high - low == 9 && columns.x1[4] == null || columns.x2[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x2[4] == null || columns.x3[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x3[4] == null || columns.x4[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x4[4] == null || columns.x5[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x5[4] == null || columns.x6[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else if(high - low == 9 && columns.x6[4] == null || columns.x7[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x7[4] == null || columns.x8[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x8[4] == null || columns.x9[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  }  else if(high - low == 9 && columns.x9[4] == null || columns.x10[5] == null) {
-    deleteElements(firstIndex, secondIndex);
-    alertSuccessBox()
-  } else {
-    alertErrorBox()
-    renderElements(generatedArr);
-  }
+// check elements
+// function deleteEl(oneIndex, twoIndex) {
+//   if(oneIndex - twoIndex === 2 && oneIndex > null < twoIndex) {
+//     console.log('okk');
+//     deleteElements(oneIndex, twoIndex);
+//     alertSuccessBox()
+//     resCount.textContent = `${++couter} +`;
+//   } else {
+//     alertErrorBox()
+//     renderElements(generatedArr);
+//   }
+// }
 
-}
 
 // check elements 
 function checkDeleteOther(bigIndex, smallIndex) {
@@ -311,6 +156,7 @@ function checkDeleteOther(bigIndex, smallIndex) {
     highRow.split('')[1] - lowRow.split('')[1] === 1
   ) {
     if(!rows[lowRow][bigIndex - 10]) {
+      console.log('ok');
       deleteElements(bigIndex, smallIndex);
       alertSuccessBox()
       resCount.textContent = `${++couter} +`;
@@ -357,7 +203,8 @@ function checkForDelete(firstIndex, secondIndex) {
     alertSuccessBox()
     resCount.textContent = `${++couter} +`;
   } else {
-    checkDeleteOther(high, low)
+    checkDeleteOther(high, low);
+    // deleteEl(high, low);
   }
 }
 
